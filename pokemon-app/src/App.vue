@@ -13,7 +13,6 @@
 
 #app {
   background-color: #0f0f0f;
-  color: #ffffff;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   min-height: 100vh; /* makes sure it fills the page */
 
