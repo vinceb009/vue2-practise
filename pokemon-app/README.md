@@ -1,5 +1,8 @@
 # pokemon-app
 
+A frontend wrapped around the PokeApi. I choose this API because it was free 😀
+
+^ This will be my first vue2 project.
 ## Project setup
 ```
 npm install
