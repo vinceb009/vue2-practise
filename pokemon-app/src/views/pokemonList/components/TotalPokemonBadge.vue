@@ -1,6 +1,6 @@
 <template>
   <span class="badge">
-    {{label}}
+    {{ label }}
   </span>
 </template>
 
@@ -14,12 +14,10 @@ export default {
 </script>
 
 <style scoped>
-.badge{
+.badge {
   background-color: #1a365d;
   color: #63b3ed;
   border-radius: 0.250rem;
-
-  margin-right: 0.5rem;
   padding: 0.250rem 0.625rem;
 }
 </style>
