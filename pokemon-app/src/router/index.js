@@ -15,7 +15,7 @@ const routes = [
         path: '/pokemon/:id',
         name: 'pokemonDetails',
         component: PokemonDetails,
-        props: true,
+        props: route => ({ id: Number(route.params.id) }),
     }
 ]
 
