@@ -6,8 +6,8 @@
     </div>
     <div>
       <button
-          class="baseMapButton mapButtonLeft"
           :disabled="!previousPokemonList"
+          class="baseMapButton mapButtonLeft"
           @click="handlePokemonList(previousPokemonList)"
       >
         <svg aria-hidden="true" class="mapButtonSvg" data-slot="icon" fill="currentColor"
@@ -18,8 +18,8 @@
         </svg>
       </button>
       <button
-          class="baseMapButton mapButtonRight"
           :disabled="!nextPokemonList"
+          class="baseMapButton mapButtonRight"
           @click="handlePokemonList(nextPokemonList)"
       >
         <svg aria-hidden="true" class="mapButtonSvg" data-slot="icon" fill="currentColor"
@@ -33,8 +33,8 @@
     <div class="pokemonContainer">
       <PokemonCard
           v-for="pokemon in pokemonList"
-          :key="pokemon.id"
           :id="pokemon.id"
+          :key="pokemon.id"
           :cover-image="pokemon.sprites.front_default"
           :name="pokemon.name"
           :types="pokemon.types"

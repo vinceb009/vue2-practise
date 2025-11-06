@@ -15,13 +15,13 @@ const routes = [
         path: '/pokemon/:id',
         name: 'pokemonDetails',
         component: PokemonDetails,
-        props: route => ({ id: Number(route.params.id) }),
+        props: route => ({id: Number(route.params.id)}),
         beforeEnter: (to, from, next) => {
             const id = Number(to.params.id);
             const totalPokemonAccessible = 1025;
 
             if (isNaN(id) || id <= 0 || id >= totalPokemonAccessible) {
-                next({ name: 'pokemonList' });
+                next({name: 'pokemonList'});
             } else {
                 next();
             }

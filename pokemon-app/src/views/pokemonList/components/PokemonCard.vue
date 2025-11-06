@@ -17,7 +17,7 @@ export default {
 
 <template>
   <transition appear name="fade">
-    <router-link class="card" :to="{ name: 'pokemonDetails', params: { id }}">
+    <router-link :to="{ name: 'pokemonDetails', params: { id }}" class="card">
       <div class="header">
         <p>#{{ id }}</p>
 
