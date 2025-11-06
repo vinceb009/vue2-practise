@@ -11,7 +11,9 @@ export default {
   data() {
     return {
       name: "",
-      sprites: []
+      sprites: [],
+      height: 0,
+      weight: 0
     }
   },
   created() {
@@ -21,13 +23,19 @@ export default {
     async handlePokemonDetails() {
       const {
         name,
-        sprites
+        sprites,
+        height,
+        weight
       } = await this.fetchPokemonDetails(
           this.buildUrlToFetch(this.id)
       );
 
       this.name = name;
-      this.sprites = this.filterAccessibleSprites(sprites);
+      this.sprites = this.filterDesiredSprites(sprites);
+
+      // the given height and weight are in dm and i want to display it as cm
+      this.height = this.convertDecimeterToCentimeter(height);
+      this.weight = this.convertHectogramToKilogram(weight);
     },
     buildUrlToFetch(id) {
       return `https://pokeapi.co/api/v2/pokemon/${id}`;
@@ -38,13 +46,21 @@ export default {
 
       return {
         name: json.name,
-        sprites: json.sprites
+        sprites: json.sprites,
+        height: json.height,
+        weight: json.weight,
       }
     },
-    filterAccessibleSprites(sprites) {
+    filterDesiredSprites(sprites) {
       // filter null images, and only take the sprites in the root dir
       // there are even more sprites in their coresponding dir, but thats out of scope for this project.
       return Object.values(sprites).filter(sprite => sprite && typeof sprite !== "object");
+    },
+    convertDecimeterToCentimeter(decimeter) {
+      return decimeter * 10;
+    },
+    convertHectogramToKilogram(hectogram) {
+      return hectogram / 10;
     }
 
   }
@@ -65,20 +81,21 @@ export default {
           :sprites="sprites"
         />
       </AnimatedCard>
-      <AnimatedCard>
-        <p class="typeContainer">
-          Hello world from card
-        </p>
-      </AnimatedCard>
-      <AnimatedCard>
-        <p class="typeContainer">
-          Hello world from card
-        </p>
-      </AnimatedCard>
-      <AnimatedCard>
-        <p class="typeContainer">
-          Hello world from card
-        </p>
+      <AnimatedCard class="sizeContainer">
+        <div>
+          <p>Height (cm)</p>
+          <p class="">
+            {{  height }}
+          </p>
+        </div>
+        <div class="seperator"/>
+        <div>
+          <p>Weight (kg)</p>
+          <p class="">
+            {{  weight }}
+          </p>
+        </div>
+
       </AnimatedCard>
     </div>
   </div>
@@ -102,4 +119,12 @@ export default {
   gap: 20px;
 }
 
+.sizeContainer {
+  display: flex;
+  gap: 20px;
+}
+
+.seperator {
+  border-right:  1px solid #c5c5c5;
+}
 </style>

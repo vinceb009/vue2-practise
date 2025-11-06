@@ -34,11 +34,6 @@ export default {
   background-color: #1b1a1a;
   padding: 15px;
   text-align: center;
-
-  /* Since a router link is rendered as a under the hood, its also comes with its own css styles, which we remove here
-     I dont think the blue text, underscore fit the current theme.
-  */
-  text-decoration: none;
   color: #c5c5c5;
 }
 </style>

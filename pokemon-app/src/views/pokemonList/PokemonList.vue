@@ -55,7 +55,7 @@ export default {
   },
   data() {
     return {
-      totalPokemonCount: 0,
+      totalPokemonCount: 1025,
       nextPokemonList: null,
       previousPokemonList: null,
       pokemonList: [],
@@ -76,13 +76,10 @@ export default {
         this.isFetchingPokemonList = true;
 
         const {
-          count,
           next,
           previous,
           results,
         } = await this.fetchPokemonList(url)
-
-        this.totalPokemonCount = count;
 
         // Since there are quite a few pokemon, the api results are given back into mutliple lists.
         // you can check out the docs:
@@ -116,7 +113,6 @@ export default {
       const json = await response.json();
 
       return {
-        count: json.count,
         next: json.next,
         previous: json.previous,
         results: json.results
